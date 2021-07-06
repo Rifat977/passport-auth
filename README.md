@@ -1,2 +1,2 @@
-# passport-auth
- laravel api authentication with Passport package
+# Laravel Passport Auth
+ Laravel Passport api authentication
