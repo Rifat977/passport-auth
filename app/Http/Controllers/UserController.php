@@ -24,7 +24,7 @@ class UserController extends Controller
         $user = User::create($allData);
 
         $resArr = [];
-        $resArr['token'] = $user->createToken('api-application')->accessToken;
+        $resArr['token'] = $user->createToken('user-application',['user'])->accessToken;
         $resArr['name']= $user->name;
         return response()->json($resArr,200);
     }
@@ -33,6 +33,7 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => $request->password
         ])){
+            config(['auth.guards.api.provider' => 'user']);
             $user = Auth::user();
             $resArr['token'] = $user->createToken('api-application')->accessToken;
             $resArr['name']= $user->name;
